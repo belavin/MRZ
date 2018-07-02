@@ -6,7 +6,7 @@ import android.view.SoundEffectConstants;
 import android.widget.ImageView;
 
 
-public class ShutterButton extends ImageView {
+public class ShutterButton extends android.support.v7.widget.AppCompatImageView {
 	public interface OnShutterButtonListener {
 		void onShutterButtonFocus(ShutterButton b, boolean pressed);
 

@@ -9,7 +9,7 @@
                android:layout_height="fill_parent"
                android:layout_centerInParent="true"/>
      
-  <com.mercuriete.mrz.reader.ViewfinderView
+  <flynn.pro.mrz.ViewfinderView
       android:id="@+id/viewfinder_view"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
@@ -157,8 +157,8 @@
               android:textSize="14sp"
               android:autoLink="web"
               android:clickable="true" />
- 
-    <com.mercuriete.mrz.reader.camera.ShutterButton
+
+    <flynn.pro.mrz.camera.ShutterButton
               android:id="@+id/shutter_button"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"

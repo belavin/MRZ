@@ -3,6 +3,7 @@ package flynn.pro.mrz;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
@@ -25,6 +26,10 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
   private final String languageCode;
   private String languageName;
   private int ocrEngineMode;
+
+  public static final String DEFAULT_STORAGE_LOCATION = Environment.getExternalStorageDirectory().getPath();
+  public static final String MRZ_FOLDER_RELATIVE = "/MRZ/";
+  public static final String MRZ_STORAGE_LOCATION = DEFAULT_STORAGE_LOCATION + MRZ_FOLDER_RELATIVE;
 
 
   OcrInitAsyncTask(CaptureActivity activity, TessBaseAPI baseApi, ProgressDialog dialog,
@@ -55,7 +60,7 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
 
   protected Boolean doInBackground(String... params) {
 
-      File f = new File(this.activity.getCacheDir()+"/tessdata/eng.traineddata");
+      File f = new File(this.activity.getCacheDir()+"/MRZ_STORAGE_LOCATION/eng.traineddata");
       File folder = new File(this.activity.getCacheDir()+"/tessdata");
       if (!f.exists()) try {
 
@@ -64,18 +69,18 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
               return false;
           }
 
-          InputStream is = this.activity.getAssets().open("tessdata/eng.traineddata");
+          InputStream is = this.activity.getAssets().open("MRZ_STORAGE_LOCATION/eng.traineddata");
           FileOutputStream fos = new FileOutputStream(f);
           copyFile(is,fos);
           fos.close();
           is.close();
       } catch (Exception e) { throw new RuntimeException(e); }
 
-    File f2 = new File(this.activity.getCacheDir()+"/tessdata/eng.user-patterns");
+    File f2 = new File(this.activity.getCacheDir()+"/MRZ_STORAGE_LOCATION/eng.user-patterns");
     File folder2 = new File(this.activity.getCacheDir()+"/tessdata");
     if (!f2.exists()) try {
 
-      InputStream is = this.activity.getAssets().open("tessdata/eng.user-patterns");
+      InputStream is = this.activity.getAssets().open("MRZ_STORAGE_LOCATION/eng.user-patterns");
       FileOutputStream fos = new FileOutputStream(f2);
       copyFile(is,fos);
       fos.close();
@@ -135,5 +140,7 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
           + "Please enable network access and restart this app.");
     }
   }
+
+
 
 }

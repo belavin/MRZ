@@ -57,7 +57,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         ShutterButton.OnShutterButtonListener {
 
     private static final String TAG = CaptureActivity.class.getSimpleName();
-
+    private static final int REQUEST_CODE_PERMISSION = 2;
 
 
     public static final String DEFAULT_SOURCE_LANGUAGE_CODE = "eng";
@@ -149,6 +149,13 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+
+        ActivityCompat.requestPermissions(this, new String[]{
+                        Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA},
+                REQUEST_CODE_PERMISSION);
+
+
         checkFirstLaunch();
 
         this.requestPermission();
@@ -160,27 +167,27 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        try {
+//        try {
             setContentView(R.layout.capture);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
         cameraButtonView = findViewById(R.id.camera_button_view);
         resultView = findViewById(R.id.result_view);
 
         statusViewBottom = (TextView) findViewById(R.id.status_view_bottom);
-        try {
+//        try {
             registerForContextMenu(statusViewBottom);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         statusViewTop = (TextView) findViewById(R.id.status_view_top);
-        try {
+//        try {
             registerForContextMenu(statusViewTop);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         handler = null;
         lastResult = null;
         hasSurface = false;
@@ -188,12 +195,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         
         if (DISPLAY_SHUTTER_BUTTON) {
             shutterButton = (ShutterButton) findViewById(R.id.shutter_button);
-            try {
+//            try {
                 shutterButton.setOnShutterButtonListener(this);
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+//            } catch (Exception e)
+//            {
+//                e.printStackTrace();
+//            }
         }
 
         ocrResultView = (TextView) findViewById(R.id.ocr_result_text_view);
@@ -336,7 +343,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         super.onResume();
         this.requestPermission();
 
-        try {
+//        try {
             resetStatusView();
             String previousSourceLanguageCodeOcr = sourceLanguageCodeOcr;
             int previousOcrEngineMode = ocrEngineMode;
@@ -361,9 +368,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
             } else {
                 resumeOCR();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
 
