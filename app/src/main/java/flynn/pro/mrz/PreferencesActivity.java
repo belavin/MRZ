@@ -9,8 +9,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
 
-
-
 public class PreferencesActivity extends PreferenceActivity implements
   OnSharedPreferenceChangeListener {
   

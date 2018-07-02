@@ -16,8 +16,6 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 
 
-
-
 public final class HelpActivity extends Activity {
 
   private static final String TAG = HelpActivity.class.getSimpleName();

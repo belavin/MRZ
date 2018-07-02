@@ -8,10 +8,11 @@ import android.hardware.Camera;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.SurfaceHolder;
-import flynn.pro.mrz.PlanarYUVLuminanceSource;
-import flynn.pro.mrz.PreferencesActivity;
 
 import java.io.IOException;
+
+import flynn.pro.mrz.PlanarYUVLuminanceSource;
+import flynn.pro.mrz.PreferencesActivity;
 
 
 public final class CameraManager {

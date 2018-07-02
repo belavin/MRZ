@@ -1,8 +1,5 @@
 package flynn.pro.mrz;
 
-import java.io.File;
-import java.io.IOException;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,7 +16,6 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
@@ -48,11 +44,13 @@ import android.widget.Toast;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
+import org.jmrtd.lds.icao.MRZInfo;
+
+import java.io.File;
+import java.io.IOException;
 
 import flynn.pro.mrz.camera.CameraManager;
 import flynn.pro.mrz.camera.ShutterButton;
-
-import org.jmrtd.lds.icao.MRZInfo;
 
 
 public final class CaptureActivity extends Activity implements SurfaceHolder.Callback,
@@ -114,7 +112,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     private OcrResult lastResult;
     private Bitmap lastBitmap;
     private boolean hasSurface;
-    private TessBaseAPI baseApi; 
+    private TessBaseAPI baseApi;
     private String sourceLanguageCodeOcr; 
     private String sourceLanguageReadable; 
     private String sourceLanguageCodeTranslation; 
@@ -778,9 +776,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 }
                 return true;
             case OPTIONS_SHARE_RECOGNIZED_TEXT_ID:
-                Intent shareRecognizedTextIntent = new Intent(android.content.Intent.ACTION_SEND);
+                Intent shareRecognizedTextIntent = new Intent(Intent.ACTION_SEND);
                 shareRecognizedTextIntent.setType("text/plain");
-                shareRecognizedTextIntent.putExtra(android.content.Intent.EXTRA_TEXT, ocrResultView.getText());
+                shareRecognizedTextIntent.putExtra(Intent.EXTRA_TEXT, ocrResultView.getText());
                 startActivity(Intent.createChooser(shareRecognizedTextIntent, "Share via"));
                 return true;
             case OPTIONS_COPY_TRANSLATED_TEXT_ID:
@@ -792,9 +790,9 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                 }
                 return true;
             case OPTIONS_SHARE_TRANSLATED_TEXT_ID:
-                Intent shareTranslatedTextIntent = new Intent(android.content.Intent.ACTION_SEND);
+                Intent shareTranslatedTextIntent = new Intent(Intent.ACTION_SEND);
                 shareTranslatedTextIntent.setType("text/plain");
-                shareTranslatedTextIntent.putExtra(android.content.Intent.EXTRA_TEXT, translationView.getText());
+                shareTranslatedTextIntent.putExtra(Intent.EXTRA_TEXT, translationView.getText());
                 startActivity(Intent.createChooser(shareTranslatedTextIntent, "Share via"));
                 return true;
             default:

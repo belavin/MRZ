@@ -1,7 +1,5 @@
 package flynn.pro.mrz;
 
-import java.util.ArrayList;
-
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.AsyncTask;
@@ -16,6 +14,8 @@ import com.googlecode.leptonica.android.WriteFile;
 import com.googlecode.tesseract.android.ResultIterator;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.googlecode.tesseract.android.TessBaseAPI.PageIteratorLevel;
+
+import java.util.ArrayList;
 
 
 final class OcrRecognizeAsyncTask extends AsyncTask<Void, Void, Boolean> {

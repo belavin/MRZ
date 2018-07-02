@@ -5,12 +5,13 @@ import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import flynn.pro.mrz.PreferencesActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import flynn.pro.mrz.PreferencesActivity;
 
 public final class AutoFocusManager implements Camera.AutoFocusCallback {
 

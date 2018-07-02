@@ -1,14 +1,12 @@
 package flynn.pro.mrz;
 
-import flynn.pro.mrz.camera.CameraManager;
-
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
-
+import flynn.pro.mrz.camera.CameraManager;
 
 
 final class CaptureActivityHandler extends Handler {

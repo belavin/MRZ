@@ -2,6 +2,7 @@ package flynn.pro.mrz;
 
 import android.os.Handler;
 import android.os.Looper;
+
 import java.util.concurrent.CountDownLatch;
 
 

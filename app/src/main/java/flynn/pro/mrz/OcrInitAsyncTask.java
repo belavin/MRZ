@@ -1,24 +1,17 @@
 package flynn.pro.mrz;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.RandomAccessFile;
-import java.util.zip.GZIPInputStream;
-
-
-import com.googlecode.tesseract.android.TessBaseAPI;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.googlecode.tesseract.android.TessBaseAPI;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 
 final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
@@ -34,9 +27,9 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
   private int ocrEngineMode;
 
 
-  OcrInitAsyncTask(CaptureActivity activity, TessBaseAPI baseApi, ProgressDialog dialog, 
-      ProgressDialog indeterminateDialog, String languageCode, String languageName, 
-      int ocrEngineMode) {
+  OcrInitAsyncTask(CaptureActivity activity, TessBaseAPI baseApi, ProgressDialog dialog,
+                   ProgressDialog indeterminateDialog, String languageCode, String languageName,
+                   int ocrEngineMode) {
     this.activity = activity;
     this.context = activity.getBaseContext();
     this.baseApi = baseApi;

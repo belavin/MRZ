@@ -1,9 +1,9 @@
 package flynn.pro.mrz;
 
-import java.util.List;
-
 import android.graphics.Point;
 import android.graphics.Rect;
+
+import java.util.List;
 
 
 public final class OcrResultText {
